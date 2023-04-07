@@ -1,16 +1,18 @@
 import React, { useRef, Provider } from "react";
 import "./App.css";
 import { GridComponent } from "./components/Grid/Grid";
-import { Main } from "../classes/Main/Main";
+import { Controller } from "../classes/Controller/Controller";
+import { GridSizeComponent } from "./components/GridSize/GridSize";
 
-export const Context = React.createContext<Main | undefined>(undefined);
+export const Context = React.createContext<Controller | undefined>(undefined);
 
 function App() {
-  const main = useRef(new Main()).current;
+  const controller = useRef(new Controller()).current;
 
   return (
     <div className="App">
-      <Context.Provider value={main}>
+      <Context.Provider value={controller}>
+        <GridSizeComponent />
         <GridComponent />
       </Context.Provider>
     </div>

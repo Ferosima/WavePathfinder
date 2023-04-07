@@ -2,7 +2,7 @@ import { Cell } from "../Cell/Cell";
 import { CELL_TYPES } from "../Cell/types";
 
 export class Grid {
-  public constructor(size: number) {
+  public constructor(public size: number) {
     // Fill a grid of a certain size
     this.grid = new Array(size)
       .fill([])

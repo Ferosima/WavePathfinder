@@ -9,6 +9,10 @@ export class Cell {
   public type: CELL_TYPES = CELL_TYPES.CELL;
 
   public selectType = (type: CELL_TYPES) => {
-    this.type = type;
+    if (this.type !== type) {
+      this.type = type;
+    } else {
+      this.type = CELL_TYPES.CELL;
+    }
   };
 }
