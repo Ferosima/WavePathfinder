@@ -1,24 +1,173 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  overrides: [],
+  // parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['react', '@typescript-eslint', 'unused-imports'],
+  rules: {
+    '@typescript-eslint/explicit-member-accessibility': [
+      'error',
+      {
+        accessibility: 'explicit',
+      },
     ],
-    "overrides": [
+    // "@typescript-eslint/member-ordering": "warn",
+    '@typescript-eslint/member-ordering': ['error'],
+    // '@typescript-eslint/no-floating-promises': 'warn',
+    // '@typescript-eslint/no-misused-promises': 'warn',
+    '@typescript-eslint/no-empty-interface': 'error',
+    '@typescript-eslint/no-shadow': 'error',
+    'import/default': 'off',
+    'import/export': 2,
+    'import/first': 2,
+    'import/named': 'off',
+    'import/namespace': 'off',
+    // "import/newline-after-import": [
+    //   "error",
+    //   {
+    //     count: 1,
+    //   },
+    // ],
+    'import/no-cycle': [
+      2,
+      {
+        maxDepth: 1,
+      },
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
+    'import/no-duplicates': [
+      'error',
+      {
+        'prefer-inline': true,
+      },
     ],
-    "rules": {
-    }
-}
+    'import/no-dynamic-require': 2,
+    'import/no-empty-named-blocks': 2,
+    'import/no-relative-packages': 'off',
+    'import/no-self-import': 'error',
+    'import/no-unresolved': 'off',
+    'import/no-unused-modules': 'error',
+    'import/order': [
+      'error',
+      {
+        groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
+      },
+    ],
+    // 'import/no-unassigned-import': 'error',
+    // 'prefer-arrow/prefer-arrow-functions': 'error',
+    'jsdoc/check-alignment': 'error',
+    'jsdoc/check-indentation': 'error',
+    'jsdoc/newline-after-description': 'error',
+
+    'jsdoc/require-param': 'off',
+    'jsdoc/require-returns': 'off',
+    'jsdoc/require-returns-type': 'off',
+    'jsx-quotes': ['error', 'prefer-double'],
+    'max-classes-per-file': ['error', 1],
+    // "max-len": [
+    //   "error",
+    //   {
+    //     code: 120,
+    //     tabWidth: 2,
+    //     // ignoreComments: true, // "comments": 80
+    //     // ignoreUrls: true,
+    //     // ignoreStrings: true,
+    //     // ignoreTemplateLiterals: true,
+    //   },
+    // ],
+    'no-bitwise': 'off',
+
+    'no-caller': 'error',
+    'no-cond-assign': 'error',
+    'no-console': [
+      'error',
+      {
+        allow: [
+          'warn',
+          'dir',
+          'time',
+          'timeEnd',
+          'timeLog',
+          'trace',
+          'assert',
+          'clear',
+          'count',
+          'countReset',
+          'group',
+          'groupEnd',
+          'table',
+          'debug',
+          'info',
+          'dirxml',
+          'error',
+          'groupCollapsed',
+          'Console',
+          'profile',
+          'profileEnd',
+          'timeStamp',
+          'context',
+        ],
+      },
+    ],
+    'no-debugger': 'error',
+    'no-empty': 'error',
+    'no-empty-function': 'off',
+    'no-eval': 'error',
+    'no-fallthrough': 'off',
+    'no-invalid-this': 'off',
+    'no-mixed-spaces-and-tabs': 'error',
+    'no-new-wrappers': 'error',
+    'no-shadow': 'off',
+    'no-throw-literal': 'error',
+    'no-trailing-spaces': 'error',
+    'no-undef-init': 'off',
+    'no-underscore-dangle': 'off',
+    'no-unsafe-finally': 'error',
+    'no-unused-expressions': 'off',
+    'no-unused-labels': 'error',
+    'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
+    'no-use-before-define': 'off',
+    'no-var': 'error',
+    'no-void': 'off',
+    'object-shorthand': 'error',
+    'one-var': ['error', 'never'],
+    'prefer-const': 'error',
+    'prettier/prettier': 'error',
+    'react-hooks/exhaustive-deps': 'off',
+    // "sort-keys": [
+    //   "error",
+    //   "asc",
+    //   { caseSensitive: true, natural: false, minKeys: 2 },
+    // ],
+    'sort-keys': 0, // disable default eslint sort-keys
+    'sort-keys/sort-keys-fix': 1,
+    // indent: ["error", "tab"],
+    'spaced-comment': [
+      'error',
+      'always',
+      {
+        markers: ['/'],
+      },
+    ],
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+        vars: 'all',
+        varsIgnorePattern: '^_',
+      },
+    ],
+  },
+};

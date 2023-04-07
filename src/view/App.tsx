@@ -1,8 +1,8 @@
-import React, { useRef, Provider } from "react";
-import "./App.css";
-import { GridComponent } from "./components/Grid/Grid";
-import { Controller } from "../classes/Controller/Controller";
-import { GridSizeComponent } from "./components/GridSize/GridSize";
+import React, { useRef } from 'react';
+import './App.scss';
+import { GridComponent } from './components/Grid/Grid';
+import { Controller } from '../classes/Controller/Controller';
+import { GridSizeComponent } from './components/GridSize/GridSize';
 
 export const Context = React.createContext<Controller | undefined>(undefined);
 

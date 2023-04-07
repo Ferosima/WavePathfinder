@@ -10,6 +10,7 @@
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "eslint-plugin-import": "^2.27.5",
     "mobx": "^6.9.0",
     "mobx-react": "^7.6.0",
     "mobx-state-tree": "^5.1.8",
@@ -49,6 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
-    "eslint-plugin-react": "^7.32.2"
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-unused-imports": "^2.0.0"
   }
 }
