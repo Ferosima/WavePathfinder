@@ -1,6 +1,6 @@
-import React, { useContext, useCallback } from "react";
 import { Context } from "../../../App";
 import { Cell } from "../../../../classes/Cell/Cell";
+import { useContext, useCallback } from "react";
 
 export const useCell = (cell: Cell) => {
   const Controller = useContext(Context);

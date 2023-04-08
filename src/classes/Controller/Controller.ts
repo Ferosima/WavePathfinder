@@ -1,11 +1,15 @@
-import { CELL_TYPES } from "../Cell/types";
-import { Grid } from "../Grid/Grid";
+import { makeAutoObservable } from 'mobx';
+import { CELL_TYPES } from '../Cell/types';
+import { Grid } from '../Grid/Grid';
 
 export class Controller {
-  public constructor() {}
+  public type: CELL_TYPES = CELL_TYPES.WALL;
+
   private Grid = new Grid(5);
 
-  public type: CELL_TYPES = CELL_TYPES.WALL;
+  public constructor() {
+    makeAutoObservable(this);
+  }
 
   public get grid() {
     return this.Grid.grid;
@@ -25,5 +29,6 @@ export class Controller {
 
   public makeGrid = (size: number) => {
     this.Grid = new Grid(size);
+    console.info('size', this.gridSize, size);
   };
 }

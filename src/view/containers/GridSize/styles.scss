@@ -1,0 +1,13 @@
+.grid-size {
+  display: flex;
+  flex-direction: row;
+
+  margin-bottom: 10px;
+
+  .input-wrapper {
+    margin-right: 5px;
+  }
+  .button {
+    max-height: 50px !important;
+  }
+}

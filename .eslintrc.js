@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -14,7 +16,16 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'unused-imports'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'unused-imports',
+    'import',
+    'jsdoc',
+    'unused-imports',
+    'prettier',
+    'sort-keys',
+  ],
   rules: {
     '@typescript-eslint/explicit-member-accessibility': [
       'error',
@@ -24,6 +35,7 @@ module.exports = {
     ],
     // "@typescript-eslint/member-ordering": "warn",
     '@typescript-eslint/member-ordering': ['error'],
+    '@typescript-eslint/no-empty-function': 'off',
     // '@typescript-eslint/no-floating-promises': 'warn',
     // '@typescript-eslint/no-misused-promises': 'warn',
     '@typescript-eslint/no-empty-interface': 'error',
@@ -57,12 +69,6 @@ module.exports = {
     'import/no-self-import': 'error',
     'import/no-unresolved': 'off',
     'import/no-unused-modules': 'error',
-    'import/order': [
-      'error',
-      {
-        groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
-      },
-    ],
     // 'import/no-unassigned-import': 'error',
     // 'prefer-arrow/prefer-arrow-functions': 'error',
     'jsdoc/check-alignment': 'error',
@@ -142,8 +148,8 @@ module.exports = {
     'object-shorthand': 'error',
     'one-var': ['error', 'never'],
     'prefer-const': 'error',
-    'prettier/prettier': 'error',
     'react-hooks/exhaustive-deps': 'off',
+    'react/display-name': 'off',
     // "sort-keys": [
     //   "error",
     //   "asc",

@@ -1,12 +1,13 @@
-import { action, makeObservable, observable } from "mobx";
-import { CELL_TYPES } from "./types";
+import { CELL_TYPES } from './types';
+import { action, makeObservable, observable } from 'mobx';
 
 export class Cell {
-  public constructor(public x: number, public y: number, filled?: boolean) {
-    makeObservable(this, { type: observable, selectType: action });
-  }
-
   public type: CELL_TYPES = CELL_TYPES.CELL;
+
+  public constructor(public x: number, public y: number, type?: CELL_TYPES) {
+    makeObservable(this, { selectType: action, type: observable });
+    if (type) this.type = type;
+  }
 
   public selectType = (type: CELL_TYPES) => {
     if (this.type !== type) {

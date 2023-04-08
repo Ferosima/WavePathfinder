@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import './App.scss';
-import { GridComponent } from './components/Grid/Grid';
+import { GridComponent } from './containers/Grid/Grid';
+import { GridSizeComponent } from './containers/GridSize/GridSize';
 import { Controller } from '../classes/Controller/Controller';
-import { GridSizeComponent } from './components/GridSize/GridSize';
 
 export const Context = React.createContext<Controller | undefined>(undefined);
 
@@ -10,10 +10,12 @@ function App() {
   const controller = useRef(new Controller()).current;
 
   return (
-    <div className="App">
+    <div className="app">
       <Context.Provider value={controller}>
-        <GridSizeComponent />
-        <GridComponent />
+        <div className="app-container">
+          <GridSizeComponent />
+          <GridComponent />
+        </div>
       </Context.Provider>
     </div>
   );
