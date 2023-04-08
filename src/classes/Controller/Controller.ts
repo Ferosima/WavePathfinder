@@ -1,14 +1,16 @@
 import { makeAutoObservable } from 'mobx';
 import { CELL_TYPES } from '../Cell/types';
 import { Grid } from '../Grid/Grid';
+import { SearchEngine } from '../SearchEngine/SearchEngine';
 
 export class Controller {
   public type: CELL_TYPES = CELL_TYPES.WALL;
 
-  private Grid = new Grid(5);
+  private Grid = new Grid(3);
 
   public constructor() {
     makeAutoObservable(this);
+    new SearchEngine(this.Grid, { x: 0, y: 0 });
   }
 
   public get grid() {
@@ -29,6 +31,9 @@ export class Controller {
 
   public makeGrid = (size: number) => {
     this.Grid = new Grid(size);
-    console.info('size', this.gridSize, size);
+  };
+
+  public clearGrid = () => {
+    this.Grid = new Grid(this.gridSize);
   };
 }
