@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
-import { CELL_TYPES } from '../Cell/types';
 import { Grid } from '../Grid/Grid';
 import { SearchEngine } from '../SearchEngine/SearchEngine';
+import { CELL_TYPES } from '../../types';
 
 type Coord = { x: number; y: number };
 
@@ -61,14 +61,6 @@ export class Controller {
   private changeStartFinish = () => {
     this.start = { x: 0, y: 0 };
     this.finish = { x: this.size - 1, y: this.size - 1 };
-  };
-
-  private setStart = (y: number, x: number) => {
-    this.start = { x, y };
-  };
-
-  private setFinish = (y: number, x: number) => {
-    this.finish = { x, y };
   };
 
   private changeDistinction = () => {

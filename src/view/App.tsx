@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './App.scss';
 import { GridComponent } from './containers/Grid/Grid';
 import { GridSizeComponent } from './containers/GridSize/GridSize';
-import { Controller } from '../classes/Controller/Controller';
+import { Controller } from '../domain/Controller/Controller';
 import Buttons from './containers/Buttons/Buttons';
 
 export const Context = React.createContext<Controller | undefined>(undefined);

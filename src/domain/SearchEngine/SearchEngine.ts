@@ -1,6 +1,5 @@
-import { Coord } from '../../types';
+import { CELL_TYPES, Coord } from '../../types';
 import { Cell } from '../Cell/Cell';
-import { CELL_TYPES } from '../Cell/types';
 import { Grid } from '../Grid/Grid';
 
 const neighborhoods: Coord[] = [

@@ -1,7 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { Cell } from '../Cell/Cell';
-import { CELL_TYPES } from '../Cell/types';
-import { Coord } from '../../types';
+import { CELL_TYPES, Coord } from '../../types';
 
 export class Grid {
   public grid: Cell[][];

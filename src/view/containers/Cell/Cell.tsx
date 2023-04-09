@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.scss';
-import { Cell } from '../../../classes/Cell/Cell';
+import { Cell } from '../../../domain/Cell/Cell';
 import { observer } from 'mobx-react';
-import { CELL_TYPES } from '../../../classes/Cell/types';
 import { useCell } from './hooks/useCell';
+import { CELL_TYPES } from '../../../types';
 
 type TCell = {
   item: Cell;

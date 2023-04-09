@@ -1,5 +1,5 @@
-import { CELL_TYPES } from './types';
 import { makeAutoObservable } from 'mobx';
+import { CELL_TYPES } from '../../types';
 
 export class Cell {
   public constructor(

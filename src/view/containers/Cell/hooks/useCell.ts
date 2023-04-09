@@ -1,5 +1,5 @@
 import { Context } from "../../../App";
-import { Cell } from "../../../../classes/Cell/Cell";
+import { Cell } from "../../../../domain/Cell/Cell";
 import { useContext, useCallback } from "react";
 
 export const useCell = (cell: Cell) => {
