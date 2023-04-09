@@ -1,6 +1,6 @@
-import { CELL_TYPES, Coord } from '../../types';
-import { Cell } from '../Cell/Cell';
+import { Coord } from '../../types';
 import { Grid } from '../Grid/Grid';
+import { Core } from './Core';
 
 const neighborhoods: Coord[] = [
   { x: 0, y: 1 },
@@ -13,14 +13,9 @@ const neighborhoods: Coord[] = [
   // { x: -1, y: 1 },
 ];
 
-export class SearchEngine {
-  public grid: number[][] = [[]];
-  public path: Coord[] = [];
-
-  private size: number;
-  public constructor(grid: Grid, private start: Coord, private finish: Coord) {
-    this.size = grid.size;
-    this.grid = grid.grid.map((row) => row.map((cell) => this.defineCell(cell)));
+export class SearchEngine extends Core {
+  public constructor(grid: Grid, start: Coord, finish: Coord) {
+    super(grid, start, finish);
 
     this.generateWave();
   }
@@ -34,6 +29,7 @@ export class SearchEngine {
 
     while (this.grid[this.finish.y][this.finish.x] === 0 && isPossible) {
       isPossible = false;
+
       this.grid.forEach((row, y) =>
         row.forEach((cell, x) => {
           // Find cell with the same distance
@@ -52,13 +48,10 @@ export class SearchEngine {
       );
       distance += 1;
     }
-    console.info('FF', this.grid, this.grid[2][1]);
   };
 
   public findShortestPath = () => {
     const path: Coord[] = [];
-
-    console.info('F', this.grid, this.grid[2][1]);
 
     // Check if there is a path
     if (this.grid[this.finish.y][this.finish.x] === 0) {
@@ -82,9 +75,8 @@ export class SearchEngine {
           this.checkCoord(currX) &&
           this.checkCoord(currY) &&
           this.grid[currY][currX] < minDistance &&
-          this.grid[currY][currX] !== -1
+          this.grid[currY][currX] > 0
         ) {
-          console.info('B', minDistance, { currX, currY }, this.grid?.[currY]?.[currX]);
           minDistance = this.grid[currY][currX];
           minCoord = { x: currX, y: currY };
         }
@@ -93,7 +85,6 @@ export class SearchEngine {
       // Move to the cell with the minimum distance
       if (minCoord) {
         [x, y] = [minCoord.x, minCoord.y];
-        console.info(minDistance, { x, y }, this.grid?.[y]?.[x], minCoord);
       } else {
         // There is no path to the start
         return [];
@@ -103,20 +94,5 @@ export class SearchEngine {
     path.unshift({ x: this.start.x, y: this.start.y });
 
     this.path = path;
-  };
-
-  private defineCell = (cell: Cell) => {
-    if (cell.type === CELL_TYPES.WALL) {
-      return -1;
-    }
-    return 0;
-  };
-
-  private checkCoord = (coord: number) => {
-    return coord >= 0 && coord <= this.size - 1;
-  };
-
-  private checkCoords = (x: number, y: number) => {
-    return this.checkCoord(x) && this.checkCoord(y) && this.grid[y][x] === 0;
   };
 }

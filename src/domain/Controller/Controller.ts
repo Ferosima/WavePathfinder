@@ -7,7 +7,7 @@ type Coord = { x: number; y: number };
 
 export class Controller {
   public type: CELL_TYPES = CELL_TYPES.WALL;
-  private size = 3;
+  private size = 4;
 
   private Grid = new Grid(this.size);
 
@@ -16,6 +16,7 @@ export class Controller {
 
   public constructor() {
     makeAutoObservable(this);
+    this.changeStartFinish();
   }
 
   public get grid() {
@@ -39,7 +40,6 @@ export class Controller {
     this.makeGrid();
 
     this.changeStartFinish();
-    this.changeDistinction();
   };
 
   public makeGrid = () => {
@@ -61,9 +61,7 @@ export class Controller {
   private changeStartFinish = () => {
     this.start = { x: 0, y: 0 };
     this.finish = { x: this.size - 1, y: this.size - 1 };
-  };
 
-  private changeDistinction = () => {
     this.Grid.selectCellType(this.start.y, this.start.x, CELL_TYPES.DESTINATION);
     this.Grid.selectCellType(this.finish.y, this.finish.x, CELL_TYPES.DESTINATION);
   };
