@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { CellComponent } from "../Cell/Cell";
-import "./styles.scss";
-import { Context } from "../../App";
-import { observer } from "mobx-react";
+import React, { useContext } from 'react';
+import { CellComponent } from '../Cell/Cell';
+import './styles.scss';
+import { Context } from '../../App';
+import { observer } from 'mobx-react';
 
 export const GridComponent = observer(() => {
   const grid = useContext(Context)?.grid;

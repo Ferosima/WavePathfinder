@@ -19,7 +19,7 @@ export const useGridSize = (): [number, string | undefined, (value: any) => void
       setError('Min size of grid 4');
       return;
     }
-    Controller?.makeGrid(size);
+    Controller?.selectSize(size);
   }, [size]);
 
   return [size, error, onChange, onSubmit];
