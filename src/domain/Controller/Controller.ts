@@ -7,7 +7,7 @@ type Coord = { x: number; y: number };
 
 export class Controller {
   public type: CELL_TYPES = CELL_TYPES.WALL;
-  private size = 4;
+  public size = 4;
 
   private Grid = new Grid(this.size);
 
@@ -21,10 +21,6 @@ export class Controller {
 
   public get grid() {
     return this.Grid.grid;
-  }
-
-  public get gridSize() {
-    return this.Grid.size;
   }
 
   public selectCell = (x: number, y: number) => {
@@ -47,12 +43,11 @@ export class Controller {
   };
 
   public clearGrid = () => {
-    this.Grid = new Grid(this.gridSize);
+    this.Grid = new Grid(this.size);
   };
 
   public findPath = () => {
     const searchEngine = new SearchEngine(this.Grid, this.start, this.finish);
-    searchEngine.findShortestPath();
 
     this.Grid.fillWaveDistanceGrid(searchEngine.grid);
     this.Grid.fillPathGrid(searchEngine.path);

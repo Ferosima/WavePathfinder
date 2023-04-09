@@ -2,7 +2,7 @@ import { Coord } from '../../types';
 import { Grid } from '../Grid/Grid';
 import { Core } from './Core';
 
-const neighborhoods: Coord[] = [
+const directions: Coord[] = [
   { x: 0, y: 1 },
   // { x: 1, y: 1 },
   { x: 1, y: 0 },
@@ -18,11 +18,13 @@ export class SearchEngine extends Core {
     super(grid, start, finish);
 
     this.generateWave();
+    this.findShortestPath()
   }
 
   public generateWave = () => {
     // Mark start coord
     this.grid[this.start.y][this.start.x] = 1;
+    /** Distance to start */
     let distance = 1;
     /** Is possible to share the wave */
     let isPossible = true;
@@ -35,7 +37,7 @@ export class SearchEngine extends Core {
           // Find cell with the same distance
           if (this.grid[y][x] == distance) {
             // Check neighbor cells
-            neighborhoods.forEach((coord: Coord) => {
+            directions.forEach((coord: Coord) => {
               const [currY, currX] = [y + coord.y, x + coord.x];
 
               if (this.checkCoords(currX, currY)) {
@@ -68,9 +70,9 @@ export class SearchEngine extends Core {
       let minDistance = this.grid[y][x];
       let minCoord: Coord | undefined;
 
-      neighborhoods.forEach((coord: Coord) => {
+      directions.forEach((coord: Coord) => {
         const [currY, currX] = [y + coord.y, x + coord.x];
-
+        // Search next coord with smaller distance
         if (
           this.checkCoord(currX) &&
           this.checkCoord(currY) &&

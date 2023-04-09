@@ -11,7 +11,9 @@ export class Grid {
     this.grid = new Array(size)
       .fill([])
       .map((itemX, y) =>
-        new Array(size).fill(null).map((itemY, x) => new Cell(x, y, this.defineType(x, y, way))),
+        new Array(size)
+          .fill(null)
+          .map((itemY, x) => new Cell(x, y, this.defineTypeOfCell(x, y, way))),
       );
   }
 
@@ -29,22 +31,20 @@ export class Grid {
   /** Clear old path and write new */
   public fillPathGrid = (path: Coord[]) => {
     this.clearOldPath();
-    // Write new
+    // Write new path
     path.forEach((coord) => {
       this.selectCellType(coord.y, coord.x, CELL_TYPES.WAY);
     });
   };
 
-  private defineType = (x: number, y: number, way?: { x: number; y: number }[]) => {
-    if ((x === 0 && y === 0) || (x === this.size - 1 && y === this.size - 1))
-      return CELL_TYPES.DESTINATION;
-
+  private defineTypeOfCell = (x: number, y: number, way?: { x: number; y: number }[]) => {
     if (way?.some((step) => step.x === x && step.y === y)) {
       return CELL_TYPES.WAY;
     }
     return CELL_TYPES.CELL;
   };
 
+  /** Go through the list and clear all fields with type way */
   private clearOldPath = () => {
     this.grid.forEach((row, y) => {
       row.forEach((cell, x) => {

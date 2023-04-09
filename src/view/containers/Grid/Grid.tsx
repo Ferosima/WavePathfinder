@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CellComponent } from '../Cell/Cell';
+import { CellComponent } from '../../components/Cell/Cell';
 import './styles.scss';
 import { Context } from '../../App';
 import { observer } from 'mobx-react';
@@ -14,7 +14,7 @@ export const GridComponent = observer(() => {
       {grid.map((row, y) => (
         <div key={y}>
           {row.map((cell, x) => (
-            <CellComponent item={cell} key={x} />
+            <CellComponent key={`${y}_${x}`} item={cell} />
           ))}
         </div>
       ))}

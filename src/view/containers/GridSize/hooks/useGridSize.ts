@@ -3,7 +3,7 @@ import { Context } from '../../../App';
 
 export const useGridSize = (): [number, string | undefined, (value: any) => void, () => void] => {
   const Controller = useContext(Context);
-  const [size, setSize] = useState<number>(Controller?.gridSize || 0);
+  const [size, setSize] = useState<number>(Controller?.size || 0);
   const [error, setError] = useState<string>();
 
   const onChange = useCallback((value: string) => {
