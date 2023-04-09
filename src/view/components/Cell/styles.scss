@@ -1,15 +1,21 @@
 .cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
-  border: 1px solid #000;
+  background: transparent;
+  border: 1px solid #5d5d5d;
 }
 .wall {
   background-color: #000;
-  border: 1px solid #fff;
+  // border: 1px solid linear-gradient(315deg, #000, #5d5d5d);
+  background: linear-gradient(315deg, #000, #5d5d5d);
 }
 .destination {
   background-color: #ee5050;
+  // background: linear-gradient(315deg, #bb0606, #f36161);
 }
 .way {
-  background-color: green;
+  // background: linear-gradient(315deg, #06882e, #79ffa2);
 }

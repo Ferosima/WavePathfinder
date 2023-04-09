@@ -2,12 +2,12 @@
   position: relative;
   display: flex;
   border-radius: 10px;
-  border: 1px solid #f1f1f1;
   outline: 1px solid transparent;
   height: 50px;
   box-sizing: border-box;
-  background: #fff;
+  background: #e0e0e0;
   transition: border-width 0.15s linear;
+  box-shadow: inset 5px 5px 10px #acacac, inset -5px -5px 10px #ffffff;
 
   &.focused {
     border: 2px solid #4dbfff;
@@ -24,7 +24,7 @@
     transition-property: transform, top, font-size;
     transition-duration: 0.5s;
     font-size: 14px;
-    font-family: 'SemiBold';
+    font-family: "SemiBold";
 
     &.compressed {
       position: relative;
