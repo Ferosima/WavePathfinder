@@ -16,7 +16,7 @@ export class Controller {
 
   public constructor() {
     makeAutoObservable(this);
-    this.changeStartFinish();
+    this.defineStartFinish();
   }
 
   public get grid() {
@@ -34,16 +34,11 @@ export class Controller {
   public selectSize = (size: number) => {
     this.size = size;
     this.makeGrid();
-
-    this.changeStartFinish();
   };
 
   public makeGrid = () => {
     this.Grid = new Grid(this.size);
-  };
-
-  public clearGrid = () => {
-    this.Grid = new Grid(this.size);
+    this.defineStartFinish();
   };
 
   public findPath = () => {
@@ -53,7 +48,7 @@ export class Controller {
     this.Grid.fillPathGrid(searchEngine.path);
   };
 
-  private changeStartFinish = () => {
+  private defineStartFinish = () => {
     this.start = { x: 0, y: 0 };
     this.finish = { x: this.size - 1, y: this.size - 1 };
 

@@ -12,7 +12,7 @@ const Buttons = () => {
       <Button
         label="Clear"
         onClick={() => {
-          Controller?.clearGrid();
+          Controller?.makeGrid();
         }}
       />
     </div>
