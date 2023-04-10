@@ -5,19 +5,16 @@
   width: 50px;
   height: 50px;
   background: transparent;
-  border: 1px solid #5d5d5d;
+  border: 1px solid #bfc5d3;
 }
 .wall {
-  background-color: #000;
-  // border: 1px solid linear-gradient(315deg, #000, #5d5d5d);
   background: linear-gradient(315deg, #000, #5d5d5d);
 }
 .destination {
-  background-color: #ee5050;
-  background: linear-gradient(315deg, #e42d2d, #f36161);
+  background: linear-gradient(315deg, #e44949, #ffb4b4);
   color: rgb(66, 10, 10);
 }
 .way {
-  background: linear-gradient(315deg, #06882e, #79ffa2);
+  background: linear-gradient(315deg, #4cc962, #b2f7bf);
   color: #064018;
 }

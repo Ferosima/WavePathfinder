@@ -13,7 +13,8 @@ const preset = {
 export const useCell = (cell: Cell): [number | null | undefined, string, () => void] => {
   const Controller = useContext(Context);
 
-  const distance = cell.distance && cell.distance > 0 ? cell.distance : null;
+  const distance =
+    cell.distance && cell.distance > 0 && cell.type !== CELL_TYPES.WALL ? cell.distance : null;
 
   const onPress = useCallback(() => {
     Controller?.selectCell(cell.x, cell.y);
