@@ -1,6 +1,6 @@
-import { CELL_TYPES, Coord } from '../../types';
-import { Cell } from '../Cell/Cell';
-import { Grid } from '../Grid/Grid';
+import { CELL_TYPES, Coord } from "../../types";
+import { Cell } from "../Cell/Cell";
+import { Grid } from "../Grid/Grid";
 
 export class Core {
   public grid: number[][] = [[]];
@@ -16,8 +16,14 @@ export class Core {
     return coord >= 0 && coord <= this.size - 1;
   };
 
-  protected checkCoords = (x: number, y: number) => {
-    return this.checkCoord(x) && this.checkCoord(y) && this.grid[y][x] === 0;
+  protected checkCoords = (coord: Coord, direction: Coord, diagonal?: boolean) => {
+    const [currY, currX] = [coord.y + direction.y, coord.x + direction.x];
+
+    // Сheck that neighboring cells are not wall
+    if (diagonal && !(this.grid?.[currY]?.[coord.x] >= 0 && this.grid?.[coord.y]?.[currX] >= 0)) {
+      return false;
+    }
+    return this.checkCoord(currY) && this.checkCoord(currX) && this.grid[currY][currX] === 0;
   };
 
   private defineCell = (cell: Cell) => {

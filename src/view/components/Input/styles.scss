@@ -7,7 +7,7 @@
   box-sizing: border-box;
   background: #e0e0e0;
   transition: border-width 0.15s linear;
-  box-shadow: inset 5px 5px 10px #acacac, inset -5px -5px 10px #ffffff;
+  box-shadow: inset -5px -5px 10px #bababa, inset 5px 5px 10px #ffffff;
 
   &.focused {
     border: 2px solid #4dbfff;

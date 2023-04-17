@@ -1,24 +1,27 @@
-import { Coord } from '../../types';
-import { Grid } from '../Grid/Grid';
-import { Core } from './Core';
+import { Coord } from "../../types";
+import { Grid } from "../Grid/Grid";
+import { Core } from "./Core";
 
-const directions: Coord[] = [
+const mainDirections: Coord[] = [
   { x: 0, y: 1 },
-  { x: 1, y: 1 },
   { x: 1, y: 0 },
-  { x: 1, y: -1 },
   { x: 0, y: -1 },
-  { x: -1, y: -1 },
   { x: -1, y: 0 },
+];
+const diagonalDirections: Coord[] = [
+  { x: 1, y: 1 },
+  { x: 1, y: -1 },
+  { x: -1, y: -1 },
   { x: -1, y: 1 },
 ];
 
+const directions = [...mainDirections, ...diagonalDirections];
 export class SearchEngine extends Core {
   public constructor(grid: Grid, start: Coord, finish: Coord) {
     super(grid, start, finish);
 
     this.generateWave();
-    this.findShortestPath()
+    this.findShortestPath();
   }
 
   public generateWave = () => {
@@ -37,11 +40,10 @@ export class SearchEngine extends Core {
           // Find cell with the same distance
           if (this.grid[y][x] == distance) {
             // Check neighbor cells
-            directions.forEach((coord: Coord) => {
-              const [currY, currX] = [y + coord.y, x + coord.x];
-
-              if (this.checkCoords(currX, currY)) {
-                this.grid[currY][currX] = distance + 1;
+            directions.forEach((direction: Coord) => {
+              const isDiagonalDirection = diagonalDirections.includes(direction);
+              if (this.checkCoords({ x, y }, direction, isDiagonalDirection)) {
+                this.grid[y + direction.y][x + direction.x] = distance + 1;
                 isPossible = true;
               }
             });
