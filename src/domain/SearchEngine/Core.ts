@@ -20,7 +20,7 @@ export class Core {
     const [currY, currX] = [coord.y + direction.y, coord.x + direction.x];
 
     // Сheck that neighboring cells are not wall
-    if (diagonal && !(this.grid?.[currY]?.[coord.x] >= 0 && this.grid?.[coord.y]?.[currX] >= 0)) {
+    if (diagonal && !(this.grid?.[currY]?.[coord.x] >= 0 || this.grid?.[coord.y]?.[currX] >= 0)) {
       return false;
     }
     return this.checkCoord(currY) && this.checkCoord(currX) && this.grid[currY][currX] === 0;
